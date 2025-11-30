@@ -33,3 +33,9 @@ export interface HistoryItem {
   content: string;
   model: string;
 }
+
+export interface ChatMessage {
+  role: 'user' | 'model';
+  text: string;
+  timestamp: number;
+}

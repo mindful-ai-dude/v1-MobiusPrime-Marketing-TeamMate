@@ -4,6 +4,7 @@ import { GlassCard } from './components/GlassCard';
 import { ModelType, OutputType, BusinessFormData, HistoryItem } from './types';
 import { generateMarketingContent } from './services/geminiService';
 import { MarkdownRenderer } from './components/MarkdownRenderer';
+import { ChatWidget } from './components/ChatWidget';
 
 // Icons
 const Spinner = () => (
@@ -16,7 +17,7 @@ const Spinner = () => (
 const App: React.FC = () => {
   // Global State
   const [apiKey, setApiKey] = useState<string>('');
-  const [selectedModel, setSelectedModel] = useState<ModelType>(ModelType.GEMINI_2_5_FLASH);
+  const [selectedModel, setSelectedModel] = useState<ModelType>(ModelType.GEMINI_3_PRO);
   const [isLoading, setIsLoading] = useState(false);
   const [generatedContent, setGeneratedContent] = useState<string | null>(null);
   const [history, setHistory] = useState<HistoryItem[]>([]);
@@ -262,6 +263,9 @@ const App: React.FC = () => {
           </GlassCard>
         </div>
       </div>
+
+      {/* Chat Widget */}
+      <ChatWidget apiKey={apiKey} model={selectedModel} />
 
       {/* History Sidebar Overlay */}
       {showHistory && (

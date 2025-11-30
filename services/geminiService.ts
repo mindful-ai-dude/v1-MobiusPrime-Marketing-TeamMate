@@ -1,4 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, Chat } from "@google/genai";
 import { BusinessFormData, ModelType } from "../types";
 import { FRAMEWORK_INSTRUCTIONS } from "../constants";
 
@@ -45,5 +45,31 @@ export const generateMarketingContent = async (
   } catch (error: any) {
     console.error("Gemini API Error:", error);
     throw new Error(error.message || "Failed to generate content");
+  }
+};
+
+// Chat Service
+export const createChatSession = (apiKey: string, model: string): Chat => {
+  if (!apiKey) throw new Error("API Key is required for Chat");
+  const ai = new GoogleGenAI({ apiKey });
+  
+  return ai.chats.create({
+    model: model,
+    config: {
+      systemInstruction: FRAMEWORK_INSTRUCTIONS + "\n\nYou are acting as a conversational consultant. Keep responses concise unless asked for detail.",
+      temperature: 0.7,
+    }
+  });
+};
+
+export const sendChatMessage = async (chat: Chat, message: string): Promise<string> => {
+  try {
+    const result = await chat.sendMessage({
+      message: message
+    });
+    return result.text;
+  } catch (error: any) {
+    console.error("Gemini Chat Error:", error);
+    throw new Error(error.message || "Failed to send message");
   }
 };
