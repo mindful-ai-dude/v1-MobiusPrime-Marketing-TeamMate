@@ -1,6 +1,6 @@
 <div align="center">
 
-![MobiusPrime Banner](image-github-mobius-prime-app-README.png)
+![MobiusPrime Banner](/images/image-github-mobius-prime-app-README.png)
 
 # MobiusPrime: Your AI-Powered Marketing TeamMate
 
