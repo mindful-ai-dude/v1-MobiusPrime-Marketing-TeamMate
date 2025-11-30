@@ -1,6 +1,6 @@
 <div align="center">
 
-![MobiusPrime Banner](https://placehold.co/1200x400/1a2336/teal?text=MobiusPrime+Marketing+TeamMate&font=montserrat)
+![MobiusPrime Banner](image/image-github-mobius-prime-app-README.jpg)
 
 # MobiusPrime: Your AI-Powered Marketing TeamMate
 
